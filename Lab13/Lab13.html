@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="Lab13.css">
+	<title>Calculator</title>
+</head>
+<body>
+	<div class="c1">
+		<h1>JS Calculator</h1>
+		<form action="#">
+			<p>Number 1</p>
+			<input type="text" id="number1" class="c2">
+			<p>Number2</p>
+			<input type="text" id="number2" class="c2">
+			<p>Operate way?</p>
+			<select id="operateway" onchange ="setButton(this.value)" class="c2">
+				<option id="plus" value="plus">+</option>
+				<option id="minus" value="minus">-</option>
+				<option id="times" value="times">*</option>
+				<option id="divide" value="divide">/</option>
+			</select>
+			<p><input type="button" id="operateButton" value="Add" onclick="calculate()" class="c2">
+		</form>
+		<p id="answer"></p>
+	</div>
+
+	<script type="text/javascript">
+		function calculate(){
+			var result;
+			var num1 = document.getElementById('number1').value;
+			var num2 = document.getElementById('number2').value;
+			if(document.getElementById('operateway').value == 'plus'){
+				result = parseInt(num1) + parseInt(num2);
+			}else if(document.getElementById('operateway').value == 'minus'){
+				result = parseInt(num1) - parseInt(num2);
+			}else if (document.getElementById('operateway').value == 'times'){
+				result = parseInt(num1) * parseInt(num2);
+			}else{
+				result = parseInt(num1) / parseInt(num2);
+			}
+			document.getElementById('answer').innerHTML = 'Result = ' + result;
+		}
+		function setButton(val){
+			var button = document.getElementById('operateButton');
+			if (val == 'plus') {
+				button.value = '加➕';
+			}else if(val == 'minus'){
+				button.value = '減➖';
+			}else if(val == 'times'){
+				button.value = '乘✖️';
+			}else{
+				button.value = '除➗';
+			}
+		}
+	</script>
+</body>
+</html>
